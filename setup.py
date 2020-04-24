@@ -23,7 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'current_load = energy_magazine.current_load:main',
+            'current_load = ' + package_name + '.current_load:main',
         ],
     },
 )
