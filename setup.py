@@ -24,6 +24,7 @@ setup(
     entry_points={
         'console_scripts': [
             'current_load = ' + package_name + '.current_load:main',
+            'random_number = ' + package_name + '.random_number_gen:main'
         ],
     },
 )
