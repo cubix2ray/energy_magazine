@@ -10,7 +10,7 @@ class RandomNumberGen(Node):
     def __init__(self):
         super().__init__('random_number_generator')
         self.publisher_ = self.create_publisher(Float32, 'random_numbers', 10)
-        timer_period = 1
+        timer_period = 1 #s
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self):

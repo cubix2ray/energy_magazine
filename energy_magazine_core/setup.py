@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'energy_magazine'
+package_name = 'energy_magazine_core'
 
 setup(
     name=package_name,
@@ -25,6 +25,7 @@ setup(
         'console_scripts': [
             'current_load = ' + package_name + '.current_load:main',
             'random_number = ' + package_name + '.random_number_gen:main'
+            'energy_server = ' + package_name + '.bms:main'
         ],
     },
 )
