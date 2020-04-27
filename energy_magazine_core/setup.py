@@ -25,7 +25,7 @@ setup(
         'console_scripts': [
             'current_load = ' + package_name + '.current_load:main',
             'random_number = ' + package_name + '.random_number_gen:main'
-            'energy_server = ' + package_name + '.bms:main'
+            'battery_state_server = ' + package_name + '.battery_state_server:main'
         ],
     },
 )

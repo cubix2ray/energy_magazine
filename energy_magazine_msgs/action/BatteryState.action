@@ -1,5 +1,16 @@
 #goal
+int64 time
 ---
 #result
+float64 time_to_empty
+float64 time_to_full
 ---
 #feedback
+float64 SOCpercent
+float64 SOCmah
+int64 battery_state
+int64 charge_state
+bool CHARGING = 1
+bool DISCHARGING = 0
+bool OK = 1
+bool DAMAGE = 0
