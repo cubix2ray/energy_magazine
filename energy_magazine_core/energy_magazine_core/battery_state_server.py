@@ -19,6 +19,7 @@ class BatteryStateServer(Node):
         self.last_callback_time = None
         self.state_of_charge = 0 # A*s
         self.max_capacity = 5*60*60 # A*s
+        self.measurements = []
         callback_group = ReentrantCallbackGroup()
         self._action_server = ActionServer(self, BatteryState, 'battery_state',
                                            self.execute_callback,
@@ -44,6 +45,7 @@ class BatteryStateServer(Node):
             self.goal_handle = None
             return
 
+        self.measurements.append(current)
         feedback_msg = BatteryState.Feedback()
         feedback_msg.soc_percent = self.state_of_charge/self.max_capacity
         feedback_msg.soc_mah = self.state_of_charge * 1000 / 60 / 60
@@ -62,6 +64,8 @@ class BatteryStateServer(Node):
 
         goal_handle.succeed()
         result = BatteryState.Result()
+        mean_current = sum(self.measurements)/len(self.measurements)
+        result.time_to_full = (self.max_capacity - self.state_of_charge)/mean_current
         return result
 
 
