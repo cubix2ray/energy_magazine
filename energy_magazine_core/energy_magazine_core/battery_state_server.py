@@ -66,6 +66,7 @@ class BatteryStateServer(Node):
         result = BatteryState.Result()
         mean_current = sum(self.measurements)/len(self.measurements)
         result.time_to_full = (self.max_capacity - self.state_of_charge)/mean_current
+        self.measurements = []
         return result
 
 
