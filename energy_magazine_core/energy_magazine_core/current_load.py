@@ -21,7 +21,7 @@ class CurrentLoad(Node):
 
     def parse_matlab_data(self, index):
         # konstrukcja ścieżki do pliku .mat
-        matlab_data_path = join(get_package_share_directory('energy_magazine'),
+        matlab_data_path = join(get_package_share_directory('energy_magazine_core'),
                                 'matlab', 'B0007.mat')
         # otwarcie pliku .mat
         battery_data = spio.loadmat(matlab_data_path,

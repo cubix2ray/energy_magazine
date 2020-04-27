@@ -6,8 +6,8 @@ float64 time_to_empty
 float64 time_to_full
 ---
 #feedback
-float64 SOCpercent
-float64 SOCmah
+float64 soc_percent
+float64 soc_mah
 int64 battery_state
 int64 charge_state
 bool CHARGING = 1

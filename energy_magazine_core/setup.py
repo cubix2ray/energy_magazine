@@ -24,8 +24,8 @@ setup(
     entry_points={
         'console_scripts': [
             'current_load = ' + package_name + '.current_load:main',
-            'random_number = ' + package_name + '.random_number_gen:main'
-            'battery_state_server = ' + package_name + '.battery_state_server:main'
+            'random_number = ' + package_name + '.random_number_gen:main',
+            'battery_state_server = ' + package_name + '.battery_state_server:main',
         ],
     },
 )
