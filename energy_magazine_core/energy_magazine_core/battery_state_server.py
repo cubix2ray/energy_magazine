@@ -1,6 +1,5 @@
 import time
-import math as m
-
+from matplotlib import pyplot
 import rclpy
 from rclpy.action import ActionServer
 from rclpy.node import Node
@@ -20,6 +19,7 @@ class BatteryStateServer(Node):
         self.state_of_charge = 0 # A*s
         self.max_capacity = 5*60*60 # A*s
         self.measurements = []
+        # self.plot_time, self.plot_soc = [], []
         callback_group = ReentrantCallbackGroup()
         self._action_server = ActionServer(self, BatteryState, 'battery_state',
                                            self.execute_callback,
@@ -37,6 +37,8 @@ class BatteryStateServer(Node):
         else:
             time_passed, self.last_callback_time = 0, now
         self.state_of_charge += current*time_passed
+        pyplot.plot(now, self.state_of_charge)
+        pyplot.draw()
         self.get_logger().info('State of charge: ' + str(round(1000*self.state_of_charge, 2))
                                + 'mAh (' + str(round(self.state_of_charge/self.max_capacity, 1)) + '%)')
         if self.goal_handle is None:
@@ -73,6 +75,8 @@ class BatteryStateServer(Node):
 def main(args=None) -> None:
     rclpy.init(args=args)
     executor = MultiThreadedExecutor()
+    pyplot.ion()
+    pyplot.show()
     rclpy.spin(BatteryStateServer(), executor=executor)
     rclpy.shutdown()
 
