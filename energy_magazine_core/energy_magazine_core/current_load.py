@@ -14,7 +14,7 @@ class CurrentLoad(Node):
         super().__init__('current_load')
         # wywołanie metody odczytującej dane z pliku .mat
         time, data = self.parse_matlab_data(index)
-        self.publisher = self.create_publisher(Float64, 'actual_current', 10)
+        self.publisher = self.create_publisher(Float64, 'current', 10)
         # uruchomienie wątku z publikowaniem danych
         threading.Thread(target=self.publish_current, args=(time, data)).start()
         self.get_logger().info('Publishing data from index ' + str(index))
